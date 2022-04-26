@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BasicCounter</string>
+    <string name="count_button_text">Count</string>
+    <string name="toast_button_text">Toast</string>
+    <string name="count_initial_value">0</string>
+    <string name="toast_message">Hello guys</string>
+</resources>
