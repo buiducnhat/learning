@@ -3,13 +3,22 @@ package com.example.droidcafe;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView;
+
+import org.w3c.dom.Text;
 
 public class OrderActivity extends AppCompatActivity implements
         AdapterView.OnItemSelectedListener {
@@ -33,6 +42,38 @@ public class OrderActivity extends AppCompatActivity implements
         // Apply the adapter to the spinner.
         if (spinner != null) {
             spinner.setAdapter(adapter);
+        }
+
+        EditText phoneEditText = findViewById(R.id.phone_text);
+        if (phoneEditText != null) {
+            phoneEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                @Override
+                public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                    boolean handled = false;
+                    if (i == EditorInfo.IME_ACTION_SEND) {
+                        dialNumber();
+                        handled = true;
+                    }
+                    return handled;
+                }
+            });
+        }
+    }
+
+    @SuppressLint("QueryPermissionsNeeded")
+    public void dialNumber() {
+        EditText phoneEditText = findViewById(R.id.phone_text);
+        String phoneNum = null;
+        if (phoneEditText != null) {
+            phoneNum = "tel:" + phoneEditText.getText().toString();
+        }
+
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse(phoneNum));
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        } else {
+            Log.d("ImplicitIntents", "Can't open phone dial");
         }
     }
 
