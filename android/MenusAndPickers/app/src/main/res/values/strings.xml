@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MenusAndPickers</string>
+    <string name="fab_description">Order</string>
+    <string name="action_order_message">You selected Order.</string>
+    <string name="action_status_message">You selected Status.</string>
+    <string name="action_favorites_message">You selected Favorites.</string>
+    <string name="action_contact_message">You selected Contact.</string>
+    <string name="action_contact">Contact</string>
+    <string name="action_status">Status</string>
+    <string name="shopping_cart">Shopping Cart</string>
+    <string name="action_favorites">Favorites</string>
+</resources>
