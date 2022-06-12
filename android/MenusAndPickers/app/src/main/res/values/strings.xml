@@ -9,4 +9,5 @@
     <string name="action_status">Status</string>
     <string name="shopping_cart">Shopping Cart</string>
     <string name="action_favorites">Favorites</string>
+    <string name="title_activity_order">Order Activity</string>
 </resources>
